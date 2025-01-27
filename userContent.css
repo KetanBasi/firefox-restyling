@@ -1,0 +1,26 @@
+/** about:* */
+@-moz-document url-prefix("about:") {
+
+    /*? No border radius */
+    button,
+    table {
+        border-radius: unset !important;
+    }
+}
+
+/** about:profiles */
+@-moz-document url-prefix("about:profiles") {
+    .action-box {
+        border-radius: unset !important;
+    }
+}
+
+/** about:home, about:newtab */
+@-moz-document url-prefix("about:home"), url-prefix("about:newtab") {
+
+    main.newtab-main .search-inner-wrapper>button,
+    main.newtab-main .search-inner-wrapper>button>input,
+    main.newtab-main .body-wrapper>.ds-layout>.ds-column section ul>li .tile {
+        border-radius: unset !important;
+    }
+}

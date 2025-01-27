@@ -1,0 +1,107 @@
+/** Tabs Toolbar container */
+html#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])) #TabsToolbar {
+    z-index: 10 !important;
+}
+
+/** Hide the entire toolbar items */
+html#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])) #TabsToolbar .toolbar-items {
+    visibility: collapse !important;
+}
+
+/** Firefox View button moved to left of nav bar */
+html#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])) #TabsToolbar .toolbar-items>#TabsToolbar-customization-target>#firefox-view-button {
+    /*? Revert the hiding prop */
+    visibility: initial !important;
+    /*? Allow to move it to the nav bar (visually) */
+    position: absolute !important;
+    /*? We want 40px x 40px drag space on the most left */
+    left: 40px !important;
+    height: 40px !important;
+    padding: initial !important;
+    margin: initial !important;
+}
+
+/** All tabs button moved to the right of nav bar */
+html#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])) #TabsToolbar .toolbar-items>#TabsToolbar-customization-target>#alltabs-button {
+    visibility: initial !important;
+    position: absolute !important;
+    right: 140px !important;
+    padding: initial !important;
+}
+
+/** All tabs button icon resizing */
+html#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])) #TabsToolbar .toolbar-items>#TabsToolbar-customization-target>#alltabs-button>.toolbarbutton-badge-stack {
+    padding: calc((40px - 16px) / 2) !important;
+}
+
+/** Temporary Container new tab button (if available) moved to the left of the all tabs button */
+html#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])) #TabsToolbar #TabsToolbar-customization-target toolbaritem[label="Open a new tab in a new Temporary Container"] {
+    visibility: initial !important;
+    position: absolute !important;
+    right: 180px !important;
+    height: 40px !important;
+    margin: initial !important;
+}
+
+/** Private browsing indicator (if available) */
+html#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])) #TabsToolbar>.private-browsing-indicator-with-label {
+    position: absolute !important;
+    margin: 0 !important;
+    width: 40px !important;
+    height: 40px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: none !important;
+}
+
+/** Private browsing indicator icon resizing */
+html#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])) #TabsToolbar>.private-browsing-indicator-with-label>.private-browsing-indicator-icon {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+/** Private browsing indicator label hiding */
+html#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])) #TabsToolbar>.private-browsing-indicator-with-label>.private-browsing-indicator-label {
+    display: none !important;
+}
+
+/** Window control buttons (minimize, maximize, close) */
+html#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])) #TabsToolbar>.titlebar-buttonbox-container {
+    position: absolute !important;
+    right: 0 !important;
+}
+
+/** Window control buttons only appear when the menubar is hidden */
+html#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])):has(toolbar#toolbar-menubar[inactive="true"]) #TabsToolbar>.titlebar-buttonbox-container {
+    visibility: initial !important;
+}
+
+/** Window control button box resizing */
+html#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])) #TabsToolbar>.titlebar-buttonbox-container>.titlebar-buttonbox {
+    height: 40px !important;
+}
+
+/** Navigation bar readjustment */
+html#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])) #nav-bar {
+    /** Left space */
+    /*? 40px for Firefox View button */
+    --left-space: 40px;
+    --left-drag-space: 40px;
+
+    /** Right space */
+    /*? 40px for All tabs button, 140px for window control (minimize, etc.) */
+    --right-space: 180px;
+    /*? In contrast, the right drag space only 20px to reduce visual gap(?) */
+    --right-drag-space: 20px;
+    --temp-container-space: 0px;
+    padding-left: calc(var(--left-space) + var(--left-drag-space)) !important;
+    padding-right: calc(var(--right-space) + var(--right-drag-space) + var(--temp-container-space)) !important;
+
+    z-index: 0 !important;
+}
+
+/** Navigation bar readjustment if temp container available */
+#main-window body:has(#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action][checked=true]:not([hidden=true])):has(#TabsToolbar #TabsToolbar-customization-target toolbaritem[label="Open a new tab in a new Temporary Container"]) #nav-bar {
+    /** (40px) for Temporary Container button */
+    --temp-container-space: 40px;
+}
